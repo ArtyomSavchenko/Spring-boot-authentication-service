@@ -1,1 +1,3 @@
-# Spring-boot-authentication-service-
+# Spring Boot authentication service
+
+The project is at the initial stage of development

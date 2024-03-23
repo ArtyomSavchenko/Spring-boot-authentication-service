@@ -1,4 +1,4 @@
-package ArtyomSavchenko.authenticationservice;
+package com.ArtyomSavchenko.authenticationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
