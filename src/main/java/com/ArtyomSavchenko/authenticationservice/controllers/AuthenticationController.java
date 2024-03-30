@@ -15,6 +15,7 @@ public class AuthenticationController {
 
     @PostMapping("auth/signup")
     public Map<String, Object> signup(String username, String password) {
-
+        ldapAuthenticationProvider.registerUser(username, password);
+        return null;
     }
 }

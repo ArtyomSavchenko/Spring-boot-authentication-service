@@ -1,6 +1,14 @@
 package com.ArtyomSavchenko.authenticationservice.ldap;
 
 public interface LdapAuthenticationProvider {
+    /**
+     * Authenticate user in LDAP
+     * @param username
+     *      User name
+     * @param password
+     *      password
+     */
+    void authenticate(String username, String password);
 
     /**
      * Register new user in LDAP

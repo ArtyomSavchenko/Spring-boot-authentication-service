@@ -3,6 +3,7 @@ package com.ArtyomSavchenko.authenticationservice.ldap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.ldap.core.LdapTemplate;
+import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.ldap.support.LdapNameBuilder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,23 @@ class LdapAuthenticationProviderImpl implements LdapAuthenticationProvider {
     private LdapTemplate ldapTemplate;
 
     @Autowired
+    private LdapContextSource contextSource;
+
+    @Autowired
+    private LdapProperties ldapProperties;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Override
+    public void authenticate(String username, String password) {
+        contextSource
+                .getContext(
+                        "uid=" +
+                                username +
+                                ",ou=people," +
+                                ldapProperties.getBase(), password);
+    }
 
     @Override
     public void registerUser(String username, String password) {
